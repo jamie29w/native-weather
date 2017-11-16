@@ -108,7 +108,7 @@ let defaultState = {
 };
 
 
-const userReducer = (state = defaultState, action) => {
+export default const userReducer = (state = defaultState, action) => {
     switch(action.type) {
         case: "SIGNIN":
             return {
@@ -128,6 +128,17 @@ const userReducer = (state = defaultState, action) => {
                     [action.key]: action.errCode
                 }
             };
+            case "LOGOUT":
+                return defaultState;
+            case "SET_TODOS":
+                return {
+                    ...state,
+                    todos: action.todos
+                };
+            default:
+                return {
+                    ...state
+                };
 
     };
 

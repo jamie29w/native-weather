@@ -4,6 +4,10 @@ const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
 
 const userSchema = new Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
     username: {
         type: String,
         required: true,

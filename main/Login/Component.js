@@ -93,7 +93,7 @@ export default function LoginComponent(props) {
             <View
                 style={{
                     display: "flex",
-                    flexWrap: "no-wrap",
+                    flexWrap: "nowrap",
                     flexDirection: "row"
                 }}>
                 <TouchableOpacity onPress={props.toggleSignIn}>
@@ -132,7 +132,7 @@ export default function LoginComponent(props) {
                 </TouchableOpacity>
             </View>
             <TextInput
-                style={styles.input}
+                style={props.signInView ? { display: "none" } : styles.input}
                 placeholder="fist name"
                 onChangeText={props.onChangefName}
                 value={props.inputs.fName}

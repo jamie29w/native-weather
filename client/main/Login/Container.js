@@ -7,22 +7,22 @@ export default class LoginContainer extends Component {
         super();
         this.state = {
             inputs: {
-                fName: "",
+                firstName: "",
                 username: "",
                 password: ""
             },
             signInView: true
         };
-        this.onChangefName = this.onChangefName.bind(this);
+        this.onChangefirstName = this.onChangefirstName.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePw = this.onChangePw.bind(this);
         this.toggleSignIn = this.toggleSignIn.bind(this);
         this.toggleSignUp = this.toggleSignUp.bind(this);
     }
 
-    onChangefName(text) {
+    onChangefirstName(text) {
         this.setState(prevState => {
-            return { inputs: { ...prevState.inputs, fName: text } };
+            return { inputs: { ...prevState.inputs, firstName: text } };
         });
     }
 
@@ -48,7 +48,7 @@ export default class LoginContainer extends Component {
     render() {
         return (
             <LoginComponent
-                onChangefName={this.onChangefName}
+                onChangefirstName={this.onChangefirstName}
                 onChangeUsername={this.onChangeUsername}
                 onChangePw={this.onChangePw}
                 inputs={this.state.inputs}

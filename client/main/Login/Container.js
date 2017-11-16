@@ -21,15 +21,21 @@ export default class LoginContainer extends Component {
     }
 
     onChangefName(text) {
-        this.setState({ inputs: { username: text } });
+        this.setState(prevState => {
+            return { inputs: { ...prevState.inputs, fName: text } };
+        });
     }
 
     onChangeUsername(text) {
-        this.setState({ inputs: { username: text } });
+        this.setState(prevState => {
+            return { inputs: { ...prevState.inputs, username: text } };
+        });
     }
 
     onChangePw(text) {
-        this.setState({ inputs: { password: text } });
+        this.setState(prevState => {
+            return { inputs: { ...prevState.inputs, password: text } };
+        });
     }
 
     toggleSignIn() {

@@ -140,8 +140,8 @@ export default function LoginComponent(props) {
             <TextInput
                 style={props.signInView ? { display: "none" } : styles.input}
                 placeholder="fist name"
-                onChangeText={props.onChangefName}
-                value={props.inputs.fName}
+                onChangeText={props.onChangefirstName}
+                value={props.inputs.firstName}
                 name="username"
             />
             <TextInput

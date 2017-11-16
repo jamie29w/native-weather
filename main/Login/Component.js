@@ -40,7 +40,7 @@ export default function LoginComponent(props) {
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
-        signInButton: {
+        signInButtonBlue: {
             height: 40,
             width: 150,
             padding: 10,
@@ -51,7 +51,18 @@ export default function LoginComponent(props) {
             // borderBottomRightRadius: 5,
             // borderTopRightRadius: 5
         },
-        signUpButton: {
+        signInButtonWhite: {
+            height: 40,
+            width: 150,
+            padding: 10,
+            backgroundColor: "#FAFAFA",
+            borderColor: "#FAFAFA",
+            // borderBottomLeftRadius: 5,
+            // borderTopLeftRadius: 5
+            borderBottomRightRadius: 5,
+            borderTopRightRadius: 5
+        },
+        signUpButtonWhite: {
             height: 40,
             width: 150,
             padding: 10,
@@ -61,7 +72,20 @@ export default function LoginComponent(props) {
             // borderTopLeftRadius: 5,
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
-        }
+        },
+        signUpButtonBlue: {
+            height: 40,
+            width: 150,
+            padding: 10,
+            backgroundColor: "#4C94F6",
+            borderColor: "#4C94F6",
+            // borderBottomLeftRadius: 5,
+            // borderTopLeftRadius: 5
+            borderBottomRightRadius: 5,
+            borderTopRightRadius: 5
+        },
+        blueText: { textAlign: "center", color: "#4C94F6" },
+        whiteText: { textAlign: "center", color: "#FAFAFA" }
     });
 
     return (
@@ -72,16 +96,36 @@ export default function LoginComponent(props) {
                     flexWrap: "no-wrap",
                     flexDirection: "row"
                 }}>
-                <TouchableOpacity>
-                    <View style={styles.signInButton}>
-                        <Text style={{ textAlign: "center", color: "#FAFAFA" }}>
+                <TouchableOpacity onPress={props.toggleSignIn}>
+                    <View
+                        style={
+                            props.signInView
+                                ? styles.signInButtonBlue
+                                : styles.signInButtonWhite
+                        }>
+                        <Text
+                            style={
+                                props.signInView
+                                    ? styles.whiteText
+                                    : styles.blueText
+                            }>
                             Sign In
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <View style={styles.signUpButton}>
-                        <Text style={{ textAlign: "center", color: "#4C94F6" }}>
+                <TouchableOpacity onPress={props.toggleSignUp}>
+                    <View
+                        style={
+                            props.signInView
+                                ? styles.signUpButtonWhite
+                                : styles.signUpButtonBlue
+                        }>
+                        <Text
+                            style={
+                                props.signInView
+                                    ? styles.blueText
+                                    : styles.whiteText
+                            }>
                             Sign Up
                         </Text>
                     </View>
@@ -113,7 +157,7 @@ export default function LoginComponent(props) {
             <TouchableOpacity>
                 <View style={styles.submitButton}>
                     <Text style={{ textAlign: "center", color: "#FAFAFA" }}>
-                        Try this
+                        Submit
                     </Text>
                 </View>
             </TouchableOpacity>

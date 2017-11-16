@@ -21,7 +21,8 @@ export default function LoginComponent(props) {
         input: {
             height: 40,
             width: 300,
-            borderColor: "gray",
+            color: "#4C94F6",
+            borderColor: "#4C94F6",
             borderWidth: 1,
             paddingLeft: 10,
             paddingRight: 10,
@@ -35,6 +36,7 @@ export default function LoginComponent(props) {
             padding: 10,
             backgroundColor: "#4C94F6",
             borderColor: "#4C94F6",
+            borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5,
             borderBottomRightRadius: 5,
@@ -46,6 +48,7 @@ export default function LoginComponent(props) {
             padding: 10,
             backgroundColor: "#4C94F6",
             borderColor: "#4C94F6",
+            borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5
             // borderBottomRightRadius: 5,
@@ -56,18 +59,20 @@ export default function LoginComponent(props) {
             width: 150,
             padding: 10,
             backgroundColor: "#FAFAFA",
-            borderColor: "#FAFAFA",
-            // borderBottomLeftRadius: 5,
-            // borderTopLeftRadius: 5
-            borderBottomRightRadius: 5,
-            borderTopRightRadius: 5
+            borderColor: "#4C94F6",
+            borderWidth: 1,
+            borderBottomLeftRadius: 5,
+            borderTopLeftRadius: 5
+            // borderBottomRightRadius: 5,
+            // borderTopRightRadius: 5
         },
         signUpButtonWhite: {
             height: 40,
             width: 150,
             padding: 10,
             backgroundColor: "#FAFAFA",
-            borderColor: "#FAFAFA",
+            borderColor: "#4C94F6",
+            borderWidth: 1,
             // borderBottomLeftRadius: 5,
             // borderTopLeftRadius: 5,
             borderBottomRightRadius: 5,
@@ -79,6 +84,7 @@ export default function LoginComponent(props) {
             padding: 10,
             backgroundColor: "#4C94F6",
             borderColor: "#4C94F6",
+            borderWidth: 1,
             // borderBottomLeftRadius: 5,
             // borderTopLeftRadius: 5
             borderBottomRightRadius: 5,

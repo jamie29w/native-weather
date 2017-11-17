@@ -47,12 +47,6 @@ class LoginContainer extends Component {
         this.setState({ signInView: false });
     }
 
-    // componentDidMount() {
-    //     let history = this.props.history;
-    //     console.log(history);
-    //     this.props.verify(history, history.location.pathname);
-    // }
-
     render() {
         return (
             <LoginComponent
@@ -68,6 +62,4 @@ class LoginContainer extends Component {
     }
 }
 
-//need equivalent to withRouter
-// export default connect(null, { verify })(LoginContainer);
 export default LoginContainer;

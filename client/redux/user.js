@@ -16,7 +16,7 @@ const logon = (success, user) => {
     };
 };
 
-const HANDLE_AUTH_ERR = (key, errCode) => {
+const handleAuthErr = (key, errCode) => {
     return {
         type: HANDLE_AUTH_ERR,
         key,
@@ -88,9 +88,9 @@ export const userActions = {
     signin,
     signup,
     logout,
-    verify,
+    verify
     //add other actions after creating
-}
+};
 
 //REDUCERS
 let defaultState = {
@@ -104,13 +104,17 @@ let defaultState = {
         password: "",
         defaultLocation: {},
         locations: []
-    }
+    },
+    authErrCode: {
+        signup: "",
+        signin: ""
+    },
+    isAuthenticated: false
 };
 
-
-export default const userReducer = (state = defaultState, action) => {
-    switch(action.type) {
-        case: "SIGNIN":
+export const userReducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case LOGON:
             return {
                 ...state,
                 authErrCode: {
@@ -120,7 +124,7 @@ export default const userReducer = (state = defaultState, action) => {
                 user: action.user,
                 isAuthenticated: action.success
             };
-        case: "HANDLE_AUTH_ERR":
+        case HANDLE_AUTH_ERR:
             return {
                 ...state,
                 authErrCode: {
@@ -128,18 +132,11 @@ export default const userReducer = (state = defaultState, action) => {
                     [action.key]: action.errCode
                 }
             };
-            case "LOGOUT":
-                return defaultState;
-            case "SET_TODOS":
-                return {
-                    ...state,
-                    todos: action.todos
-                };
-            default:
-                return {
-                    ...state
-                };
-
-    };
-
-}
+        case LOGOUT:
+            return defaultState;
+        default:
+            return {
+                ...state
+            };
+    }
+};

@@ -7,8 +7,6 @@ import {
     Button,
     TouchableOpacity
 } from "react-native";
-// import { Button } from "react-native-elements";
-// import Button from "react-native-button";
 
 export default function LoginComponent(props) {
     const styles = StyleSheet.create({
@@ -51,8 +49,6 @@ export default function LoginComponent(props) {
             borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5
-            // borderBottomRightRadius: 5,
-            // borderTopRightRadius: 5
         },
         signInButtonWhite: {
             height: 40,
@@ -63,8 +59,6 @@ export default function LoginComponent(props) {
             borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5
-            // borderBottomRightRadius: 5,
-            // borderTopRightRadius: 5
         },
         signUpButtonWhite: {
             height: 40,
@@ -73,8 +67,6 @@ export default function LoginComponent(props) {
             backgroundColor: "#FAFAFA",
             borderColor: "#4C94F6",
             borderWidth: 1,
-            // borderBottomLeftRadius: 5,
-            // borderTopLeftRadius: 5,
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
@@ -85,8 +77,6 @@ export default function LoginComponent(props) {
             backgroundColor: "#4C94F6",
             borderColor: "#4C94F6",
             borderWidth: 1,
-            // borderBottomLeftRadius: 5,
-            // borderTopLeftRadius: 5
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
@@ -158,8 +148,6 @@ export default function LoginComponent(props) {
                 value={props.inputs.password}
                 name="password"
             />
-            {/* <Button style={styles.button}>SUBMIT</Button> */}
-            {/* <Button title="SUBMIT" color="#4C94F6" /> */}
             <TouchableOpacity>
                 <View style={styles.submitButton}>
                     <Text style={{ textAlign: "center", color: "#FAFAFA" }}>

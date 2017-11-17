@@ -1,8 +1,10 @@
 import React from "react";
 import { Component } from "react";
 import LoginComponent from "./Component";
+import { connect } from "react-redux";
+import { verify } from "../../redux/user";
 
-export default class LoginContainer extends Component {
+class LoginContainer extends Component {
     constructor() {
         super();
         this.state = {
@@ -45,6 +47,12 @@ export default class LoginContainer extends Component {
         this.setState({ signInView: false });
     }
 
+    // componentDidMount() {
+    //     let history = this.props.history;
+    //     console.log(history);
+    //     this.props.verify(history, history.location.pathname);
+    // }
+
     render() {
         return (
             <LoginComponent
@@ -59,3 +67,7 @@ export default class LoginContainer extends Component {
         );
     }
 }
+
+//need equivalent to withRouter
+// export default connect(null, { verify })(LoginContainer);
+export default LoginContainer;

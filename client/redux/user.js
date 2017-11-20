@@ -36,7 +36,7 @@ export const signup = (creds, history) => {
                 history.push("/profile");
             })
             .catch(err => {
-                dispatch(HANDLE_AUTH_ERR("signup", err.response.status));
+                dispatch(handleAuthErr("signup", err.response.status));
             });
     };
 };
@@ -51,7 +51,7 @@ export const signin = (creds, history) => {
                 history.push("/profile");
             })
             .catch(err => {
-                dispatch(HANDLE_AUTH_ERR("signin", err.response.status));
+                dispatch(handleAuthErr("signin", err.response.status));
             });
     };
 };
@@ -102,7 +102,6 @@ let defaultState = {
         firstName: "",
         username: "",
         password: "",
-        defaultLocation: {},
         locations: []
     },
     authErrCode: {

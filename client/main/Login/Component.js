@@ -141,6 +141,7 @@ export default function LoginComponent(props) {
                 onChangeText={props.onChangeUsername}
                 value={props.inputs.username}
                 name="username"
+                autoCapitalize="none"
             />
             <TextInput
                 style={styles.input}
@@ -148,6 +149,8 @@ export default function LoginComponent(props) {
                 onChangeText={props.onChangePw}
                 value={props.inputs.password}
                 name="password"
+                autoCapitalize="none"
+                secureTextEntry="true"
             />
             <TouchableOpacity>
                 <View style={styles.submitButton}>

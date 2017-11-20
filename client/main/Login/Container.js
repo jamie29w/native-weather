@@ -1,8 +1,10 @@
 import React from "react";
 import { Component } from "react";
 import LoginComponent from "./Component";
+import { connect } from "react-redux";
+import { verify } from "../../redux/user";
 
-export default class LoginContainer extends Component {
+class LoginContainer extends Component {
     constructor() {
         super();
         this.state = {
@@ -59,3 +61,5 @@ export default class LoginContainer extends Component {
         );
     }
 }
+
+export default LoginContainer;

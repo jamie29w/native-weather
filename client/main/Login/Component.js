@@ -5,7 +5,8 @@ import {
     View,
     TextInput,
     Button,
-    TouchableOpacity
+    TouchableOpacity,
+    FormInput
 } from "react-native";
 
 export default function LoginComponent(props) {

@@ -1,9 +1,10 @@
 import React from "react";
-// import { StyleSheet, Text, View, TextInput } from "react-native";
 import LoginContainer from "./main/Login/Container";
+import WeatherViewContainer from "./main/WeatherView/Container";
+import "./styling/index.css";
 
 export default class App extends React.Component {
     render() {
-        return <LoginContainer />;
+        return <WeatherViewContainer />;
     }
 }

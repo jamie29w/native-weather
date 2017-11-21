@@ -19,7 +19,7 @@ export default class WeatherContainer extends Component {
                 ]
             },
             hourly: {},
-            iconPath: "../../assets/cloud.svg"
+            iconPath: "../../assets/cloud.png"
         };
     }
 
@@ -52,26 +52,29 @@ export default class WeatherContainer extends Component {
             });
     }
 
-    getIcon() {
+    setIcon() {
         switch (this.state.current.icon) {
             case "clear-day":
-                return "clear-day";
+                iconPath = "clear-day";
             default:
-                let iconPath = "../../assets/cloud.svg";
+                iconPath = "../../assets/cloud.png";
         }
 
-        this.setState({
-            ...prevState,
-            iconPath
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                iconPath: iconPath
+            };
         });
     }
 
     componentDidMount() {
         this.getLocation();
-        // this.getIcon();
+        this.setIcon();
     }
 
     render() {
+        console.log(this.state.iconPath);
         return (
             <WeatherComponent
                 current={this.state.current}

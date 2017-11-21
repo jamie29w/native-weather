@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-// import icon from `{props.iconPath}`
-
-let iconPath = "../../assets/cloud.svg";
+// import FastImage from "react-native-fast-image";
 
 export default function WeatherComponent(props) {
     const styles = StyleSheet.create({
@@ -12,8 +10,6 @@ export default function WeatherComponent(props) {
             backgroundColor: "#4C94F6",
             alignItems: "center",
             paddingTop: 50
-
-            // justifyContent: "space-between"
         },
         icon: {
             width: 150,
@@ -45,12 +41,13 @@ export default function WeatherComponent(props) {
             color: "#FAFAFA"
         }
     });
-
-    console.log(iconPath);
-
+    let iconPath = props.iconPath;
     return (
         <View style={styles.container}>
-            <Image source={require("../../../assets/cloud.svg")} />
+            <Image
+                source={{ uri: props.iconPath }}
+                style={{ width: 250, height: 200 }}
+            />
             <View style={styles.sect1}>
                 <Text style={styles.headText}>Right Meow:</Text>
                 <Text style={styles.infoText}>

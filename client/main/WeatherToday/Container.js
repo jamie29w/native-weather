@@ -48,7 +48,6 @@ export default class WeatherTodayContainer extends Component {
                         daily: response.data.daily
                     };
                 });
-                // this.setIconString();
             });
     }
 

@@ -10,6 +10,7 @@ export default class WeatherForecastContainer extends Component {
                 temperature: "",
                 icon: ""
             },
+            weeklySummary: "",
             daily: {
                 data: [
                     {
@@ -17,9 +18,9 @@ export default class WeatherForecastContainer extends Component {
                         temperatureLow: ""
                     }
                 ]
-            },
-            hourly: {}
+            }
         };
+        this.genDailyForecast = this.genDailyForecast.bind(this);
     }
 
     getLocation() {
@@ -27,6 +28,19 @@ export default class WeatherForecastContainer extends Component {
             this.getWeather(
                 position.coords.latitude,
                 position.coords.longitude
+            );
+        });
+    }
+
+    //get api obj
+    //map through daily.data
+    //populate info
+    genDailyForecast() {
+        return this.state.daily.data.map((day, i) => {
+            return (
+                <View>
+                    <Text>Hi!</Text>
+                </View>
             );
         });
     }
@@ -48,7 +62,6 @@ export default class WeatherForecastContainer extends Component {
                         daily: response.data.daily
                     };
                 });
-                // this.setIconString();
             });
     }
 
@@ -57,10 +70,12 @@ export default class WeatherForecastContainer extends Component {
     }
 
     render() {
+        console.log(this.state.daily.data);
         return (
             <WeatherForecastComponent
                 current={this.state.current}
                 daily={this.state.daily}
+                genDailyForecast={this.genDailyForecast}
             />
         );
     }

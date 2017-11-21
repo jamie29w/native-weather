@@ -62,11 +62,38 @@ export default function WeatherTodayComponent(props) {
         case "clear-night":
             currIcon = clearNight;
             break;
+        case "cloudy":
+            currIcon = cloudy;
+            break;
+        case "fog":
+            currIcon = fog;
+            break;
+        case "hail":
+            currIcon = hail;
+            break;
         case "partly-cloudy-day":
             currIcon = partlyCloudyDay;
             break;
         case "partly-cloudy-night":
             currIcon = partlyCloudyNight;
+            break;
+        case "rain":
+            currIcon = rain;
+            break;
+        case "sleet":
+            currIcon = sleet;
+            break;
+        case "snow":
+            currIcon = snow;
+            break;
+        case "thunderstorm":
+            currIcon = thunderstorm;
+            break;
+        case "tornado":
+            currIcon = tornado;
+            break;
+        case "wind":
+            currIcon = wind;
             break;
         default:
             currIcon = cloud;

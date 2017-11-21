@@ -150,9 +150,9 @@ export default function LoginComponent(props) {
                 value={props.inputs.password}
                 name="password"
                 autoCapitalize="none"
-                secureTextEntry="true"
+                secureTextEntry={true}
             />
-            <TouchableOpacity>
+        <TouchableOpacity onPress={props.signInView ? props.signin : props.signup}>
                 <View style={styles.submitButton}>
                     <Text style={{ textAlign: "center", color: "#FAFAFA" }}>
                         Submit

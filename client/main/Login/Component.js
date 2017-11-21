@@ -156,6 +156,11 @@ export default function LoginComponent(props) {
                     </Text>
                 </View>
             </TouchableOpacity>
+            <Text
+                style={(styles.blueText, { bottom: -50 })}
+                href="https://darksky.net/poweredby/">
+                Powered by Dark Sky
+            </Text>
         </View>
     );
 }

@@ -49,31 +49,33 @@ export default class WeatherContainer extends Component {
                         daily: response.data.daily
                     };
                 });
+                this.setIconString();
             });
     }
 
+    //helper function for setIconString - glyphicons are named per the possible
+    //icon strings Darks Sky provides
     setIcon() {
-        switch (this.state.current.icon) {
-            case "clear-day":
-                iconPath = "clear-day";
-            default:
-                iconPath = "../../assets/cloud.png";
-        }
+        return "../../assets/" + this.state.current.icon;
+    }
 
+    //updates this.state.iconPath to a string of the path for the correct glyphicon
+    //gets called after response is received
+    setIconString() {
         this.setState(prevState => {
             return {
                 ...prevState,
-                iconPath: iconPath
+                iconPath: this.setIcon()
             };
         });
     }
 
     componentDidMount() {
         this.getLocation();
-        this.setIcon();
     }
 
     render() {
+        console.log(this.state.current.icon);
         console.log(this.state.iconPath);
         return (
             <WeatherComponent

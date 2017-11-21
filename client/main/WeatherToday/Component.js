@@ -1,5 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Button } from "react-native";
+import {Actions} from "react-native-router-flux";
+
+// WEATHER ICONS \\
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -14,6 +17,7 @@ import snow from "../../assets/snow.png";
 import thunderstorm from "../../assets/thunderstorm.png";
 import tornado from "../../assets/tornado.png";
 import wind from "../../assets/wind.png";
+/////////////////////////////////////////
 
 export default function WeatherTodayComponent(props) {
     const styles = StyleSheet.create({
@@ -125,10 +129,10 @@ export default function WeatherTodayComponent(props) {
                     {props.daily.data[0].summary}
                 </Text>
             </View>
-            <View>
+            <View style={{marginTop: 50}}>
                 <Button
-                    title="push"
-                    onPress={() => navigate("Forecast")}></Button>
+                    title="Extended Forecast >>"
+                    onPress={() => Actions.forecast()}></Button>
             </View>
         </View>
     );

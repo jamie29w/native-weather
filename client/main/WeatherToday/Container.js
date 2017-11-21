@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import WeatherTodayComponent from "./Component";
+import Today from "./Component";
 
 export default class WeatherTodayContainer extends Component {
     constructor() {
@@ -57,7 +57,7 @@ export default class WeatherTodayContainer extends Component {
 
     render() {
         return (
-            <WeatherTodayComponent
+            <Today
                 current={this.state.current}
                 daily={this.state.daily}
                 navigation={this.props.navigation}

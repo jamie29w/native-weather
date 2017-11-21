@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Actions } from "react-native-router-flux";
 
 const authUrl = "http://localhost:7000/auth/";
 const weatherUrl = "http://localhost:7000/weather";
@@ -46,6 +47,8 @@ export const signin = (creds) => {
         axios.post(authUrl + "login", creds)
             .then(response => {
                 let { token, user, success } = response.data;
+                AsyncStorage.setItem("token", token);
+                Actions.today;
                 dispatch(logon(success, user));
                 // history.push("/profile");
             })

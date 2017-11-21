@@ -6,7 +6,10 @@ export default class WeatherContainer extends Component {
     constructor() {
         super();
         this.state = {
-            current: {},
+            current: {
+                temperature: "",
+                icon: ""
+            },
             daily: {
                 data: [
                     {
@@ -15,9 +18,8 @@ export default class WeatherContainer extends Component {
                     }
                 ]
             },
-            highTempToday: 0,
-            lowTempToday: 0,
-            hourly: {}
+            hourly: {},
+            iconPath: "../../assets/cloud.svg"
         };
     }
 
@@ -50,8 +52,23 @@ export default class WeatherContainer extends Component {
             });
     }
 
+    getIcon() {
+        switch (this.state.current.icon) {
+            case "clear-day":
+                return "clear-day";
+            default:
+                let iconPath = "../../assets/cloud.svg";
+        }
+
+        this.setState({
+            ...prevState,
+            iconPath
+        });
+    }
+
     componentDidMount() {
         this.getLocation();
+        // this.getIcon();
     }
 
     render() {
@@ -59,6 +76,7 @@ export default class WeatherContainer extends Component {
             <WeatherComponent
                 current={this.state.current}
                 daily={this.state.daily}
+                iconPath={this.state.iconPath}
             />
         );
     }

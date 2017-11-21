@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
+import cloud from "../../assets/cloud.png";
 import cloudy from "../../assets/cloudy.png";
 import fog from "../../assets/fog.png";
 import hail from "../../assets/hail.png";
@@ -53,37 +54,30 @@ export default function WeatherComponent(props) {
             color: "#FAFAFA"
         }
     });
-    console.log(`PROPS.ICONPATH IS: ${props.iconPath}`);
+    console.log(`PROPS.CURRENT.ICON IS: ${props.current.icon}`);
+    let currIcon;
+
+    switch (props.current.icon) {
+        case "clear-day":
+            currIcon = clearDay;
+            break;
+        case "clear-night":
+            currIcon = clearNight;
+            break;
+        case "partly-cloudy-day":
+            currIcon = partlyCloudyDay;
+            break;
+        case "partly-cloudy-night":
+            currIcon = partlyCloudyNight;
+            break;
+        default:
+            currIcon = cloud;
+            break;
+    }
+
     return (
         <View style={styles.container}>
-            <Image
-                source={require("../../assets/partly-cloudy-night.png")}
-                //***The source above is a stand-in only.***
-                //I tried source={props.iconPath} and found that the require
-                //resolves before the prop is received. I've given it a static
-                //string above so you can see how the app looks with the image.
-                //I also tried the switch statement below, but again, the prop
-                //isn't received, so it doesn't really matter. I think we need
-                //a way to update and re-render the image. Ideas?
-
-                // switch (props.iconPath) {
-                //     case "clear-day":
-                //         clearDay
-                //         break;
-                //     case "clear-night":
-                //         clearNight;
-                //         break;
-                //     case "partly-cloudy-night":
-                //         require("../../assets/partly-cloudy-night.png")
-                //         break;
-                //     default:
-                //         cloud;
-                //         break;
-                //
-                // }
-
-                style={{ width: 250, height: 200 }}
-            />
+            <Image source={currIcon} style={{ width: 250, height: 200 }} />
             <View style={styles.sect1}>
                 <Text style={styles.headText}>Right Meow:</Text>
                 <Text style={styles.infoText}>

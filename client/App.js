@@ -11,7 +11,9 @@ const store = createStore(userReducer, applyMiddleware(thunk));
 export default class App extends React.Component {
     render() {
         return (
-            <Provider store={store}><WeatherContainer /></Provider>
+            <Provider store={store}>
+                <WeatherContainer />
+            </Provider>
         );
     }
 }

@@ -40,7 +40,7 @@ export default class WeatherTodayContainer extends Component {
             )
             .then(response => {
                 this.setState(prevState => {
-                    console.log(response.data.daily);
+                    // console.log(response.data.daily);
                     return {
                         ...prevState,
                         current: response.data.currently,
@@ -60,6 +60,7 @@ export default class WeatherTodayContainer extends Component {
             <WeatherTodayComponent
                 current={this.state.current}
                 daily={this.state.daily}
+                navigation={this.props.navigation}
             />
         );
     }

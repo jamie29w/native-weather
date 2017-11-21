@@ -118,107 +118,110 @@ export default function WeatherForecastComponent(props) {
     }
 
     return (
-        <View style={styles.viewContainer}>
-            {/* Right Meow */}
-            <View style={{ height: 22 }} />
-            <View style={styles.header}>
-                <Image source={currIcon} style={styles.icon} />
-                <Text style={(styles.headText, { color: "rebeccapurple" })}>
-                    Right Meow: {Math.round(Number(props.current.temperature))}°{" "}
-                    {props.current.summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Monday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect2}>
-                <Text style={styles.headText}>Tuesday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Wednesday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect2}>
-                <Text style={styles.headText}>Thursday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Friday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect2}>
-                <Text style={styles.headText}>Saturday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Sunday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
+        <View style={{flex: 1}}>
+            <Text>Other Screen</Text>
         </View>
+        // <View style={styles.viewContainer}>
+        //     {/* Right Meow */}
+        //     <View style={{ height: 22 }} />
+        //     <View style={styles.header}>
+        //         <Image source={currIcon} style={styles.icon} />
+        //         <Text style={(styles.headText, { color: "rebeccapurple" })}>
+        //             Right Meow: {Math.round(Number(props.current.temperature))}°{" "}
+        //             {props.current.summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect1}>
+        //         <Text style={styles.headText}>Monday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect2}>
+        //         <Text style={styles.headText}>Tuesday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect1}>
+        //         <Text style={styles.headText}>Wednesday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect2}>
+        //         <Text style={styles.headText}>Thursday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect1}>
+        //         <Text style={styles.headText}>Friday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect2}>
+        //         <Text style={styles.headText}>Saturday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        //
+        //     <View style={styles.daySect1}>
+        //         <Text style={styles.headText}>Sunday</Text>
+        //
+        //         <Text style={styles.infoText}>
+        //             Hi:{" "}
+        //             {Math.round(Number(props.daily.data[0].temperatureHigh))}°
+        //             Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+        //         </Text>
+        //         <Text style={styles.infoText}>
+        //             {props.daily.data[0].summary}
+        //         </Text>
+        //     </View>
+        // </View>
     );
 }

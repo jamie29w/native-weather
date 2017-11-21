@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -100,6 +100,8 @@ export default function WeatherTodayComponent(props) {
             break;
     }
 
+    const { navigate } = props.navigation;
+
     return (
         <View style={styles.container}>
             <Image source={currIcon} style={{ width: 250, height: 200 }} />
@@ -122,6 +124,11 @@ export default function WeatherTodayComponent(props) {
                 <Text style={styles.infoText}>
                     {props.daily.data[0].summary}
                 </Text>
+            </View>
+            <View>
+                <Button
+                    title="push"
+                    onPress={() => navigate("Forecast")}></Button>
             </View>
         </View>
     );

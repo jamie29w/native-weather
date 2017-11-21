@@ -1,7 +1,6 @@
 import React from "react";
 import LoginContainer from "./main/Login/Container";
-import WeatherViewContainer from "./main/WeatherView/Container";
-// import "./styling/index.css";
+import WeatherContainer from "./main/Weather/Container";
 
 import { userReducer } from "./redux/user";
 import thunk from "redux-thunk";
@@ -12,7 +11,7 @@ const store = createStore(userReducer, applyMiddleware(thunk));
 export default class App extends React.Component {
     render() {
         return (
-            <Provider store={store}><LoginContainer /></Provider>
+            <Provider store={store}><WeatherContainer /></Provider>
         );
     }
 }

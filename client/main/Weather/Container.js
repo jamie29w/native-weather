@@ -18,8 +18,9 @@ export default class WeatherContainer extends Component {
                     }
                 ]
             },
-            hourly: {},
-            iconPath: "../../assets/cloud.png"
+            hourly: {}
+            // icon: "cloud",
+            // iconPath: "../../assets/cloud.png"
         };
     }
 
@@ -49,26 +50,26 @@ export default class WeatherContainer extends Component {
                         daily: response.data.daily
                     };
                 });
-                this.setIconString();
+                // this.setIconString();
             });
     }
 
     //helper function for setIconString - glyphicons are named per the possible
     //icon strings Darks Sky provides
-    setIcon() {
-        return "../../assets/" + this.state.current.icon;
-    }
+    // setIcon(prevState) {
+    //     return "../../assets/" + prevState.current.icon + ".png";
+    // }
 
     //updates this.state.iconPath to a string of the path for the correct glyphicon
     //gets called after response is received
-    setIconString() {
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                iconPath: this.setIcon()
-            };
-        });
-    }
+    // setIconString() {
+    //     this.setState(prevState => {
+    //         return {
+    //             ...prevState,
+    //             iconPath: this.setIcon(prevState)
+    //         };
+    //     });
+    // }
 
     componentDidMount() {
         this.getLocation();
@@ -81,7 +82,8 @@ export default class WeatherContainer extends Component {
             <WeatherComponent
                 current={this.state.current}
                 daily={this.state.daily}
-                iconPath={this.state.iconPath}
+                // iconPath={this.state.iconPath}
+                // icon={this.state.icon}
             />
         );
     }

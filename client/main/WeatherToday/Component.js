@@ -15,10 +15,9 @@ import thunderstorm from "../../assets/thunderstorm.png";
 import tornado from "../../assets/tornado.png";
 import wind from "../../assets/wind.png";
 
-export default function WeatherComponent(props) {
+export default function WeatherTodayComponent(props) {
     const styles = StyleSheet.create({
         container: {
-            borderColor: "red",
             flex: 1,
             backgroundColor: "#AFAFAF",
             alignItems: "center",
@@ -54,7 +53,6 @@ export default function WeatherComponent(props) {
             color: "#FAFAFA"
         }
     });
-    console.log(`PROPS.CURRENT.ICON IS: ${props.current.icon}`);
     let currIcon;
 
     switch (props.current.icon) {

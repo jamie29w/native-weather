@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import WeatherComponent from "./Component";
+import WeatherForecastComponent from "./Component";
 
-export default class WeatherContainer extends Component {
+export default class WeatherForecastContainer extends Component {
     constructor() {
         super();
         this.state = {
@@ -19,8 +19,6 @@ export default class WeatherContainer extends Component {
                 ]
             },
             hourly: {}
-            // icon: "cloud",
-            // iconPath: "../../assets/cloud.png"
         };
     }
 
@@ -54,36 +52,15 @@ export default class WeatherContainer extends Component {
             });
     }
 
-    //helper function for setIconString - glyphicons are named per the possible
-    //icon strings Darks Sky provides
-    // setIcon(prevState) {
-    //     return "../../assets/" + prevState.current.icon + ".png";
-    // }
-
-    //updates this.state.iconPath to a string of the path for the correct glyphicon
-    //gets called after response is received
-    // setIconString() {
-    //     this.setState(prevState => {
-    //         return {
-    //             ...prevState,
-    //             iconPath: this.setIcon(prevState)
-    //         };
-    //     });
-    // }
-
     componentDidMount() {
         this.getLocation();
     }
 
     render() {
-        console.log(this.state.current.icon);
-        console.log(this.state.iconPath);
         return (
-            <WeatherComponent
+            <WeatherForecastComponent
                 current={this.state.current}
                 daily={this.state.daily}
-                // iconPath={this.state.iconPath}
-                // icon={this.state.icon}
             />
         );
     }

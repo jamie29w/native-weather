@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const authUrl = "https://localhost:7000/auth/";
-const weatherUrl = "https://localhost:7000/weather";
+const authUrl = "http://localhost:7000/auth/";
+const weatherUrl = "http://localhost:7000/weather";
 
 const LOGON = "LOGON";
 const HANDLE_AUTH_ERR = "HANDLE_AUTH_ERR";
@@ -25,33 +25,33 @@ const handleAuthErr = (key, errCode) => {
 };
 
 //ACTIONS
-export const signup = (creds, history) => {
+export const signup = (creds) => {
     return dispatch => {
-        axios
-            .post(authUrl + "signup/", creds)
+        axios.post(authUrl + "signup", creds)
             .then(response => {
                 let { token, user, success } = response.data;
-                localStorage.setItem("token", token);
+                AsyncStorage.setItem("token", token);
                 dispatch(logon(success, user));
-                history.push("/profile");
+                // history.push("/profile");
             })
             .catch(err => {
-                dispatch(HANDLE_AUTH_ERR("signup", err.response.status));
+                throw err;
+                dispatch(handleAuthErr("signup", err.response.status));
             });
     };
 };
 
-export const signin = (creds, history) => {
+export const signin = (creds) => {
     return dispatch => {
-        axios
-            .post(authUrl + "login/", creds)
+        axios.post(authUrl + "login", creds)
             .then(response => {
                 let { token, user, success } = response.data;
                 dispatch(logon(success, user));
-                history.push("/profile");
+                // history.push("/profile");
             })
             .catch(err => {
-                dispatch(HANDLE_AUTH_ERR("signin", err.response.status));
+                throw err;
+                dispatch(handleAuthErr("signin", err.response.status));
             });
     };
 };
@@ -78,12 +78,6 @@ export const verify = (history, pathname) => {
     };
 };
 
-// export const loadWeather = () => {
-//     return dispatch => {
-//         axios.get()
-//     }
-// }
-
 export const userActions = {
     signin,
     signup,
@@ -102,7 +96,6 @@ let defaultState = {
         firstName: "",
         username: "",
         password: "",
-        defaultLocation: {},
         locations: []
     },
     authErrCode: {

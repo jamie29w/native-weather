@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import LoginComponent from "./Component";
 import { connect } from "react-redux";
-import { verify } from "../../redux/user";
+import { verify, signin, signup } from "../../redux/user";
 
 class LoginContainer extends Component {
     constructor() {
@@ -20,6 +20,8 @@ class LoginContainer extends Component {
         this.onChangePw = this.onChangePw.bind(this);
         this.toggleSignIn = this.toggleSignIn.bind(this);
         this.toggleSignUp = this.toggleSignUp.bind(this);
+        this.signin = this.signin.bind(this);
+        this.signup = this.signup.bind(this);
     }
 
     onChangefirstName(text) {
@@ -47,6 +49,14 @@ class LoginContainer extends Component {
         this.setState({ signInView: false });
     }
 
+    signin(e) {
+        this.props.signin(this.state.inputs)
+    }
+
+    signup(e) {
+        this.props.signup(this.state.inputs)
+    }
+
     render() {
         return (
             <LoginComponent
@@ -57,9 +67,11 @@ class LoginContainer extends Component {
                 signInView={this.state.signInView}
                 toggleSignIn={this.toggleSignIn}
                 toggleSignUp={this.toggleSignUp}
+                signin={this.signin}
+                signup={this.signup}
             />
         );
     }
 }
 
-export default LoginContainer;
+export default connect(null, {verify, signin, signup})(LoginContainer);

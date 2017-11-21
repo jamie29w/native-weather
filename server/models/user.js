@@ -18,10 +18,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    defaultLocation: {
-        longitude: String,
-        latitude: String
-    },
     locations: [{
         longitude: String,
         latitude: String

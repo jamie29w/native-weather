@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -16,19 +15,23 @@ import thunderstorm from "../../assets/thunderstorm.png";
 import tornado from "../../assets/tornado.png";
 import wind from "../../assets/wind.png";
 
-export default function DayComponentRender(props) {
+export default function DayComponent(props) {
     const styles = StyleSheet.create({
-        viewContainer: {
-            flex: 1,
-            backgroundColor: "white"
+        icon: {
+            width: 75,
+            height: 50
         },
-        daySect: {
+        daySect1: {
             flex: 2,
-            flexDirection: "row",
+            backgroundColor: "#4C94F6",
             alignItems: "center",
-            marginTop: 5,
-            marginBottom: 10,
-            backgroundColor: "white"
+            flexDirection: "row"
+        },
+        daySect2: {
+            flex: 2,
+            backgroundColor: "#AFAFAF",
+            alignItems: "center",
+            flexDirection: "row"
         },
         icon: {
             width: 75,
@@ -36,9 +39,11 @@ export default function DayComponentRender(props) {
         }
     });
 
+    //provides path, based on icon attribute from Dark Sky
+    //defaults to cloud
     let currIcon;
 
-    switch (props.current.icon) {
+    switch (props.day.icon) {
         case "clear-day":
             currIcon = clearDay;
             break;
@@ -83,20 +88,20 @@ export default function DayComponentRender(props) {
             break;
     }
 
+    //alternates backgroundColor
+    let viewStyles = styles.daySect1;
+    if (props.i % 2 === 0) {
+        viewStyles = styles.daySect2;
+    }
+
     return (
-        <View style={styles.viewContainer}>
-            {/* Padding for Status Bar */}
-            <View style={{ height: 22 }} />
-            {/* Weather Right Meow */}
-            <View style={styles.daySect}>
-                <Image source={currIcon} style={styles.icon} />
-                <Text style={{ color: "rebeccapurple" }}>
-                    Right Meow: {Math.round(Number(props.current.temperature))}°{" "}
-                    {props.current.summary}
-                </Text>
-            </View>
-            {/* Render 7 day forecast */}
-            {props.genDailyForecast()}
+        <View style={viewStyles}>
+            <Image source={currIcon} style={styles.icon} />
+            <Text style={{ color: "rebeccapurple" }}>
+                {props.day.time} Hi:{" "}
+                {Math.round(Number(props.day.temperatureHigh))}° Lo:{" "}
+                {Math.round(Number(props.day.temperatureLow))}°
+            </Text>
         </View>
     );
 }

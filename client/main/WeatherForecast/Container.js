@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
 import axios from "axios";
 import WeatherForecastComponent from "./Component";
+import DayComponent from "./DayComponent";
 
 export default class WeatherForecastContainer extends Component {
     constructor() {
@@ -32,16 +34,10 @@ export default class WeatherForecastContainer extends Component {
         });
     }
 
-    //get api obj
-    //map through daily.data
-    //populate info
     genDailyForecast() {
         return this.state.daily.data.map((day, i) => {
-            return (
-                <View>
-                    <Text>Hi!</Text>
-                </View>
-            );
+            console.log(day);
+            return <DayComponent key={day.time + i} day={day} i={i} />;
         });
     }
 

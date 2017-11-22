@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
+
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -15,58 +16,43 @@ import thunderstorm from "../../assets/thunderstorm.png";
 import tornado from "../../assets/tornado.png";
 import wind from "../../assets/wind.png";
 
-export default function WeatherForecastComponent(props) {
+export default function DayComponentRender(props) {
     const styles = StyleSheet.create({
         viewContainer: {
             flex: 1,
-            // width: "auto",
-            // backgroundColor: "#AFAFAF"
-            backgroundColor: "#4C94F6"
-            // alignItems: "center",
+            backgroundColor: "#AFAFAF"
         },
-        header: {
-            flex: 2,
-            backgroundColor: "yellow",
-            flexDirection: "row",
-            alignItems: "center"
+
+        tempText: {
+            fontSize: 55,
+            color: "#7D418C",
+            paddingLeft: 15
+        },
+        summaryText: {
+            color: "#7D418C",
+            textAlign: "center",
+            fontSize: 25
         },
         icon: {
-            width: 75,
-            height: 50
+            width: 80,
+            height: 80,
+            marginRight: 15
         },
-        daySect1: {
-            flex: 2,
-            backgroundColor: "#AFAFAF",
+        daySect: {
+            flex: 1.5,
+            flexDirection: "row",
             alignItems: "center",
-            flexDirection: "column",
-            justifyContent: "center"
+            marginTop: 5,
+            marginBottom: 10,
+            backgroundColor: "white",
+            justifyContent: "space-between",
+            borderBottomColor: "#4C94F6",
+            borderBottomWidth: 1,
+            borderTopColor: "#4C94F6",
+            borderTopWidth: 1
         },
-        daySect2: {
-            flex: 2,
-            backgroundColor: "#4C94F6",
-            alignItems: "center",
-            flexDirection: "column",
-            justifyContent: "center"
-        },
-        headText: {
-            color: "#FAFAFA",
-            fontSize: 20,
-            textAlign: "center"
-        },
-        infoText: {
-            color: "#FAFAFA",
-            fontSize: 15,
-            textAlign: "center"
-        },
-        summary: {
-            borderColor: "red",
-            textAlign: "center",
-            color: "#FAFAFA"
-        },
-        tempText: {
-            borderColor: "red",
-            textAlign: "center",
-            color: "#FAFAFA"
+        degCol: {
+            color: "#7D418C"
         }
     });
 
@@ -119,106 +105,19 @@ export default function WeatherForecastComponent(props) {
 
     return (
         <View style={styles.viewContainer}>
-            {/* Right Meow */}
-            <View style={{ height: 22 }} />
-            <View style={styles.header}>
+            {/* Padding for Status Bar */}
+            <View style={{ height: 22, backgroundColor: "#AFAFAF" }} />
+            {/* Weather Right Meow */}
+            <View style={styles.daySect}>
+                <Text style={styles.tempText}>
+                    {Math.round(Number(props.current.temperature))}
+                    <Text style={styles.degCol}>°</Text>
+                </Text>
+                <Text style={styles.summaryText}>{props.current.summary}</Text>
                 <Image source={currIcon} style={styles.icon} />
-                <Text style={(styles.headText, { color: "rebeccapurple" })}>
-                    Right Meow: {Math.round(Number(props.current.temperature))}°{" "}
-                    {props.current.summary}
-                </Text>
             </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Monday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect2}>
-                <Text style={styles.headText}>Tuesday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Wednesday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect2}>
-                <Text style={styles.headText}>Thursday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Friday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect2}>
-                <Text style={styles.headText}>Saturday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
-
-            <View style={styles.daySect1}>
-                <Text style={styles.headText}>Sunday</Text>
-
-                <Text style={styles.infoText}>
-                    Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
-                </Text>
-                <Text style={styles.infoText}>
-                    {props.daily.data[0].summary}
-                </Text>
-            </View>
+            {/* Render 7 day forecast */}
+            {props.genDailyForecast()}
         </View>
     );
 }

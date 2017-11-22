@@ -25,36 +25,36 @@ export default function WeatherTodayComponent(props) {
             flex: 1,
             backgroundColor: "#AFAFAF",
             alignItems: "center",
-            paddingTop: 20
+            flexDirection: "column",
+            justifyContent: "space-around"
         },
         icon: {
-            width: 150,
-            height: 150
+            height: 100,
+            flex: 1
         },
-        sect2: {
-            marginTop: 50,
-            marginLeft: 20,
-            marginRight: 20
+        textSect: {
+            flex: 1,
+            flexDirection: "column"
         },
         headText: {
             color: "#4C94F6",
-            fontSize: 25,
-            textAlign: "center"
+            fontSize: 30,
+            textAlign: "center",
+            marginTop: 10,
+            marginBottom: 10
         },
         infoText: {
             color: "#FAFAFA",
             fontSize: 35,
             textAlign: "center"
         },
-        summary: {
-            borderColor: "red",
-            textAlign: "center",
-            color: "#FAFAFA"
-        },
         tempText: {
-            borderColor: "red",
             textAlign: "center",
-            color: "#FAFAFA"
+            color: "#FAFAFA",
+            fontSize: 35
+        },
+        degCol: {
+            color: "#7D418C"
         }
     });
     let currIcon;
@@ -108,22 +108,28 @@ export default function WeatherTodayComponent(props) {
 
     return (
         <View style={styles.container}>
-            <Image source={currIcon} style={{ width: 250, height: 200 }} />
-            <View style={styles.sect1}>
+            <View style={{ height: 22, backgroundColor: "#AFAFAF" }} />
+            <Image
+                source={currIcon}
+                resizeMode={"contain"}
+                style={styles.icon}
+            />
+            <View style={styles.textSect}>
                 <Text style={styles.headText}>Right Meow:</Text>
-                <Text style={styles.infoText}>
-                    {Math.round(Number(props.current.temperature))}°
+                <Text style={styles.tempText}>
+                    {Math.round(Number(props.current.temperature))}
+                    <Text style={styles.degCol}>°</Text>
                 </Text>
                 <Text style={styles.infoText}>{props.current.summary}</Text>
             </View>
-
-            <View style={styles.sect2}>
+            <View style={styles.textSect}>
                 <Text style={styles.headText}>Tell me more:</Text>
-
-                <Text style={styles.infoText}>
+                <Text style={styles.tempText}>
                     Hi:{" "}
-                    {Math.round(Number(props.daily.data[0].temperatureHigh))}°
-                    Lo: {Math.round(Number(props.daily.data[0].temperatureLow))}°
+                    {Math.round(Number(props.daily.data[0].temperatureHigh))}{" "}
+                    <Text style={styles.degCol}>°</Text> Lo:{" "}
+                    {Math.round(Number(props.daily.data[0].temperatureLow))}
+                    <Text style={styles.degCol}>°</Text>
                 </Text>
                 <Text style={styles.infoText}>
                     {props.daily.data[0].summary}

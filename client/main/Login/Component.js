@@ -13,7 +13,7 @@ export default function LoginComponent(props) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: "#fff",
+            backgroundColor: "#FAFAFA",
             alignItems: "center",
             justifyContent: "center"
         },
@@ -81,8 +81,19 @@ export default function LoginComponent(props) {
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
-        blueText: { textAlign: "center", color: "#4C94F6" },
-        whiteText: { textAlign: "center", color: "#FAFAFA" }
+        blueText: {
+            textAlign: "center",
+            color: "#4C94F6"
+        },
+        whiteText: {
+            textAlign: "center",
+            color: "#FAFAFA"
+        },
+        poweredByText: {
+            textAlign: "center",
+            color: "#7D418C",
+            bottom: -80
+        }
     });
 
     return (
@@ -152,7 +163,8 @@ export default function LoginComponent(props) {
                 autoCapitalize="none"
                 secureTextEntry={true}
             />
-        <TouchableOpacity onPress={props.signInView ? props.signin : props.signup}>
+            <TouchableOpacity
+                onPress={props.signInView ? props.signin : props.signup}>
                 <View style={styles.submitButton}>
                     <Text style={{ textAlign: "center", color: "#FAFAFA" }}>
                         Submit
@@ -160,7 +172,7 @@ export default function LoginComponent(props) {
                 </View>
             </TouchableOpacity>
             <Text
-                style={(styles.blueText, { bottom: -50 })}
+                style={styles.poweredByText}
                 href="https://darksky.net/poweredby/">
                 Powered by Dark Sky
             </Text>

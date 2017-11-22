@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
     StyleSheet,
     Text,
@@ -9,7 +10,7 @@ import {
     FormInput
 } from "react-native";
 
-export default function LoginComponent(props) {
+function LoginComponent(props) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -141,7 +142,7 @@ export default function LoginComponent(props) {
             </View>
             <TextInput
                 style={props.signInView ? { display: "none" } : styles.input}
-                placeholder="fist name"
+                placeholder="first name"
                 onChangeText={props.onChangefirstName}
                 value={props.inputs.firstName}
                 name="username"
@@ -176,6 +177,14 @@ export default function LoginComponent(props) {
                 href="https://darksky.net/poweredby/">
                 Powered by Dark Sky
             </Text>
+            <Text>
+                {props.authErr.signup === 500 ? "Sorry, this username already exists!" : ""}
+                {props.authErr.signin === 401 ? "Sorry, that username or password is incorrect" : ""}
+            </Text>
         </View>
     );
 }
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps)(LoginComponent);

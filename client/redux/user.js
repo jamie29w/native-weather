@@ -44,7 +44,7 @@ export const signup = (creds) => {
                 let { token, user, success } = response.data;
                 setToken(token);
                 dispatch(logon(success, user));
-                // history.push("/profile");
+                Actions.today();
             })
             .catch(err => {
                 throw err;

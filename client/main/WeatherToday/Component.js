@@ -1,6 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
-import {Actions} from "react-native-router-flux";
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    Button,
+    TouchableOpacity
+} from "react-native";
+import { Actions } from "react-native-router-flux";
 
 // WEATHER ICONS \\
 import clearDay from "../../assets/clear-day.png";
@@ -25,28 +32,33 @@ export default function WeatherTodayComponent(props) {
             flex: 1,
             backgroundColor: "#AFAFAF",
             alignItems: "center",
+            alignContent: "stretch",
             flexDirection: "column",
-            justifyContent: "space-around"
+            justifyContent: "space-between"
         },
         icon: {
             height: 100,
-            flex: 1
+            flex: 1,
+            marginTop: 20,
+            marginBottom: 20
         },
         textSect: {
             flex: 1,
             flexDirection: "column"
         },
         headText: {
-            color: "#4C94F6",
+            color: "#7D418C",
             fontSize: 30,
             textAlign: "center",
-            marginTop: 10,
-            marginBottom: 10
+            marginTop: 20,
+            marginBottom: 20
         },
         infoText: {
             color: "#FAFAFA",
             fontSize: 35,
-            textAlign: "center"
+            textAlign: "center",
+            paddingLeft: 25,
+            paddingRight: 25
         },
         tempText: {
             textAlign: "center",
@@ -55,8 +67,52 @@ export default function WeatherTodayComponent(props) {
         },
         degCol: {
             color: "#7D418C"
+        },
+
+        //new styles
+
+        buttonSect: {
+            marginTop: 150,
+            flex: 1,
+            display: "flex",
+            flexWrap: "nowrap",
+            flexDirection: "row",
+            alignSelf: "center"
+        },
+        logOutButton: {
+            height: 40,
+            width: 150,
+            paddingTop: 10,
+            paddingBottom: 10,
+            backgroundColor: "#7D418C",
+            borderColor: "#7D418C",
+            borderWidth: 1,
+            borderBottomLeftRadius: 5,
+            borderTopLeftRadius: 5,
+            alignSelf: "flex-end"
+        },
+        forecastButton: {
+            height: 40,
+            width: 150,
+            padding: 10,
+            backgroundColor: "#FAFAFA",
+            borderColor: "#7D418C",
+            borderWidth: 1,
+            borderBottomRightRadius: 5,
+            borderTopRightRadius: 5
+        },
+
+        blueText: {
+            textAlign: "center",
+            color: "#7D418C"
+        },
+        whiteText: {
+            textAlign: "center",
+            color: "#FAFAFA"
         }
     });
+
+    //provides icon path, based on daily.icon from Dark Sky
     let currIcon;
 
     switch (props.current.icon) {
@@ -108,7 +164,6 @@ export default function WeatherTodayComponent(props) {
 
     return (
         <View style={styles.container}>
-            <View style={{ height: 22, backgroundColor: "#AFAFAF" }} />
             <Image
                 source={currIcon}
                 resizeMode={"contain"}
@@ -135,15 +190,19 @@ export default function WeatherTodayComponent(props) {
                     {props.daily.data[0].summary}
                 </Text>
             </View>
-            <View style={{marginTop: 50}}>
-                <Button
-                    title="Extended Forecast >>"
-                    onPress={() => Actions.forecast()}></Button>
-            </View>
-            <View>
-                <Button
-                    title="logout"
-                    onPress={() => Actions.reset("login")}></Button>
+            {/* break */}
+
+            <View style={styles.buttonSect}>
+                <TouchableOpacity onPress={() => Actions.reset("login")}>
+                    <View style={styles.logOutButton}>
+                        <Text style={styles.whiteText}>Logout</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => Actions.forecast()}>
+                    <View style={styles.forecastButton}>
+                        <Text style={styles.blueText}>Extended Forecast</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         </View>
     );

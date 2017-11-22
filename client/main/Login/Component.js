@@ -7,22 +7,24 @@ import {
     TextInput,
     Button,
     TouchableOpacity,
-    FormInput
+    FormInput,
+    Linking
 } from "react-native";
 
 function LoginComponent(props) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: "#FAFAFA",
+            backgroundColor: "#AFAFAF",
             alignItems: "center",
             justifyContent: "center"
         },
         input: {
             height: 40,
             width: 300,
-            color: "#4C94F6",
-            borderColor: "#4C94F6",
+            color: "#7D418C",
+            borderColor: "#7D418C",
+            backgroundColor: "#FAFAFA",
             borderWidth: 1,
             paddingLeft: 10,
             paddingRight: 10,
@@ -34,20 +36,20 @@ function LoginComponent(props) {
             height: 40,
             width: 300,
             padding: 10,
-            backgroundColor: "#4C94F6",
-            borderColor: "#4C94F6",
+            backgroundColor: "#7D418C",
+            borderColor: "#7D418C",
             borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5,
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
-        signInButtonBlue: {
+        signInButtonPurple: {
             height: 40,
             width: 150,
             padding: 10,
-            backgroundColor: "#4C94F6",
-            borderColor: "#4C94F6",
+            backgroundColor: "#7D418C",
+            borderColor: "#7D418C",
             borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5
@@ -57,7 +59,7 @@ function LoginComponent(props) {
             width: 150,
             padding: 10,
             backgroundColor: "#FAFAFA",
-            borderColor: "#4C94F6",
+            borderColor: "#7D418C",
             borderWidth: 1,
             borderBottomLeftRadius: 5,
             borderTopLeftRadius: 5
@@ -67,24 +69,24 @@ function LoginComponent(props) {
             width: 150,
             padding: 10,
             backgroundColor: "#FAFAFA",
-            borderColor: "#4C94F6",
+            borderColor: "#7D418C",
             borderWidth: 1,
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
-        signUpButtonBlue: {
+        signUpButtonPurple: {
             height: 40,
             width: 150,
             padding: 10,
-            backgroundColor: "#4C94F6",
-            borderColor: "#4C94F6",
+            backgroundColor: "#7D418C",
+            borderColor: "#7D418C",
             borderWidth: 1,
             borderBottomRightRadius: 5,
             borderTopRightRadius: 5
         },
-        blueText: {
+        PurpleText: {
             textAlign: "center",
-            color: "#4C94F6"
+            color: "#7D418C"
         },
         whiteText: {
             textAlign: "center",
@@ -109,14 +111,14 @@ function LoginComponent(props) {
                     <View
                         style={
                             props.signInView
-                                ? styles.signInButtonBlue
+                                ? styles.signInButtonPurple
                                 : styles.signInButtonWhite
                         }>
                         <Text
                             style={
                                 props.signInView
                                     ? styles.whiteText
-                                    : styles.blueText
+                                    : styles.PurpleText
                             }>
                             Sign In
                         </Text>
@@ -127,12 +129,12 @@ function LoginComponent(props) {
                         style={
                             props.signInView
                                 ? styles.signUpButtonWhite
-                                : styles.signUpButtonBlue
+                                : styles.signUpButtonPurple
                         }>
                         <Text
                             style={
                                 props.signInView
-                                    ? styles.blueText
+                                    ? styles.PurpleText
                                     : styles.whiteText
                             }>
                             Sign Up
@@ -172,11 +174,13 @@ function LoginComponent(props) {
                     </Text>
                 </View>
             </TouchableOpacity>
-            <Text
-                style={styles.poweredByText}
-                href="https://darksky.net/poweredby/">
-                Powered by Dark Sky
-            </Text>
+            <Button
+                title="Powered by Dark Sky"
+                color="#7D418C"
+                onPress={() =>
+                    Linking.openURL("https://darksky.net/poweredby/")
+                }
+            />
             <Text>
                 {props.authErr.signup === 500 ? "Sorry, this username already exists!" : ""}
                 {props.authErr.signin === 401 ? "Sorry, that username or password is incorrect" : ""}

@@ -25,7 +25,7 @@ export default function WeatherTodayComponent(props) {
             flex: 1,
             backgroundColor: "#AFAFAF",
             alignItems: "center",
-            paddingTop: 50
+            paddingTop: 20
         },
         icon: {
             width: 150,
@@ -133,6 +133,11 @@ export default function WeatherTodayComponent(props) {
                 <Button
                     title="Extended Forecast >>"
                     onPress={() => Actions.forecast()}></Button>
+            </View>
+            <View>
+                <Button
+                    title="logout"
+                    onPress={() => Actions.login()}></Button>
             </View>
         </View>
     );

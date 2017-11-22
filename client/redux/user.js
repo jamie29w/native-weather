@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Actions } from "react-native-router-flux";
+import { AsyncStorage } from "react-native";
 
 const authUrl = "http://localhost:7000/auth/";
 const weatherUrl = "http://localhost:7000/weather";
@@ -25,13 +26,23 @@ const handleAuthErr = (key, errCode) => {
     };
 };
 
+const setToken = async (token) => {
+    try {
+          await AsyncStorage.setItem('@MySuperStore:token', token);
+        } catch (error) {
+          // Error saving data
+          console.log(error);
+        }
+}
+
+
 //ACTIONS
 export const signup = (creds) => {
     return dispatch => {
         axios.post(authUrl + "signup", creds)
             .then(response => {
                 let { token, user, success } = response.data;
-                AsyncStorage.setItem("token", token);
+                setToken(token);
                 dispatch(logon(success, user));
                 // history.push("/profile");
             })
@@ -47,10 +58,9 @@ export const signin = (creds) => {
         axios.post(authUrl + "login", creds)
             .then(response => {
                 let { token, user, success } = response.data;
-                AsyncStorage.setItem("token", token);
-                Actions.today;
+                setToken(token);
                 dispatch(logon(success, user));
-                // history.push("/profile");
+                Actions.today();
             })
             .catch(err => {
                 throw err;

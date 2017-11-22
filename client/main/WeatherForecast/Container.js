@@ -76,6 +76,7 @@ export default class WeatherForecastContainer extends Component {
                 current={this.state.current}
                 daily={this.state.daily}
                 genDailyForecast={this.genDailyForecast}
+                navigation={this.props.navigation}
             />
         );
     }

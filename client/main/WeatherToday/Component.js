@@ -1,5 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
+import {Actions} from "react-native-router-flux";
+
+// WEATHER ICONS \\
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -14,6 +17,7 @@ import snow from "../../assets/snow.png";
 import thunderstorm from "../../assets/thunderstorm.png";
 import tornado from "../../assets/tornado.png";
 import wind from "../../assets/wind.png";
+/////////////////////////////////////////
 
 export default function WeatherTodayComponent(props) {
     const styles = StyleSheet.create({
@@ -21,7 +25,7 @@ export default function WeatherTodayComponent(props) {
             flex: 1,
             backgroundColor: "#AFAFAF",
             alignItems: "center",
-            paddingTop: 50
+            paddingTop: 20
         },
         icon: {
             width: 150,
@@ -100,6 +104,8 @@ export default function WeatherTodayComponent(props) {
             break;
     }
 
+    const { navigate } = props.navigation;
+
     return (
         <View style={styles.container}>
             <Image source={currIcon} style={{ width: 250, height: 200 }} />
@@ -122,6 +128,16 @@ export default function WeatherTodayComponent(props) {
                 <Text style={styles.infoText}>
                     {props.daily.data[0].summary}
                 </Text>
+            </View>
+            <View style={{marginTop: 50}}>
+                <Button
+                    title="Extended Forecast >>"
+                    onPress={() => Actions.forecast()}></Button>
+            </View>
+            <View>
+                <Button
+                    title="logout"
+                    onPress={() => Actions.reset("login")}></Button>
             </View>
         </View>
     );

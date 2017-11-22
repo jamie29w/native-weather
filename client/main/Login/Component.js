@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
     StyleSheet,
     Text,
@@ -10,7 +11,7 @@ import {
     Linking
 } from "react-native";
 
-export default function LoginComponent(props) {
+function LoginComponent(props) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -180,6 +181,14 @@ export default function LoginComponent(props) {
                     Linking.openURL("https://darksky.net/poweredby/")
                 }
             />
+            <Text>
+                {props.authErr.signup === 500 ? "Sorry, this username already exists!" : ""}
+                {props.authErr.signin === 401 ? "Sorry, that username or password is incorrect" : ""}
+            </Text>
         </View>
     );
 }
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps)(LoginComponent);

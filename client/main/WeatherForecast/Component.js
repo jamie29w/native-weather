@@ -20,19 +20,39 @@ export default function DayComponentRender(props) {
     const styles = StyleSheet.create({
         viewContainer: {
             flex: 1,
-            backgroundColor: "white"
+            backgroundColor: "#AFAFAF"
+        },
+
+        tempText: {
+            fontSize: 55,
+            color: "#7D418C",
+            paddingLeft: 15
+        },
+        summaryText: {
+            color: "#7D418C",
+            textAlign: "center",
+            fontSize: 25
+        },
+        icon: {
+            width: 80,
+            height: 80,
+            marginRight: 15
         },
         daySect: {
-            flex: 2,
+            flex: 1.5,
             flexDirection: "row",
             alignItems: "center",
             marginTop: 5,
             marginBottom: 10,
-            backgroundColor: "white"
+            backgroundColor: "white",
+            justifyContent: "space-between",
+            borderBottomColor: "#4C94F6",
+            borderBottomWidth: 1,
+            borderTopColor: "#4C94F6",
+            borderTopWidth: 1
         },
-        icon: {
-            width: 75,
-            height: 50
+        degCol: {
+            color: "#7D418C"
         }
     });
 
@@ -89,11 +109,12 @@ export default function DayComponentRender(props) {
             <View style={{ height: 22, backgroundColor: "#AFAFAF" }} />
             {/* Weather Right Meow */}
             <View style={styles.daySect}>
-                <Image source={currIcon} style={styles.icon} />
-                <Text style={{ color: "rebeccapurple" }}>
-                    Right Meow: {Math.round(Number(props.current.temperature))}°{" "}
-                    {props.current.summary}
+                <Text style={styles.tempText}>
+                    {Math.round(Number(props.current.temperature))}
+                    <Text style={styles.degCol}>°</Text>
                 </Text>
+                <Text style={styles.summaryText}>{props.current.summary}</Text>
+                <Image source={currIcon} style={styles.icon} />
             </View>
             {/* Render 7 day forecast */}
             {props.genDailyForecast()}

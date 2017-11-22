@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import LoginComponent from "./Component";
 import { connect } from "react-redux";
-import { verify, signin, signup } from "../../redux/user";
+import { verify, signin, signup, clearAuthErrs } from "../../redux/user";
 
 class LoginContainer extends Component {
     constructor() {
@@ -32,7 +32,7 @@ class LoginContainer extends Component {
 
     onChangeUsername(text) {
         this.setState(prevState => {
-            return { inputs: { ...prevState.inputs, username: text } };
+            return { inputs: { ...prevState.inputs, username: text.toLowerCase() } };
         });
     }
 
@@ -43,10 +43,26 @@ class LoginContainer extends Component {
     }
 
     toggleSignIn() {
-        this.setState({ signInView: true });
+        this.setState({
+            inputs: {
+                firstName: "",
+                username: "",
+                password: ""
+            },
+            signInView: true
+        });
+        this.props.clearAuthErrs();
     }
     toggleSignUp() {
-        this.setState({ signInView: false });
+        this.setState({
+            inputs: {
+                firstName: "",
+                username: "",
+                password: ""
+            },
+            signInView: false
+        });
+        this.props.clearAuthErrs();
     }
 
     signin(e) {
@@ -74,4 +90,6 @@ class LoginContainer extends Component {
     }
 }
 
-export default connect(null, {verify, signin, signup})(LoginContainer);
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps, {verify, signin, signup, clearAuthErrs})(LoginContainer);

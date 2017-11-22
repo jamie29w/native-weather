@@ -7,7 +7,6 @@ const weatherUrl = "http://localhost:7000/weather";
 
 const LOGON = "LOGON";
 const HANDLE_AUTH_ERR = "HANDLE_AUTH_ERR";
-const LOGOUT = "LOGOUT";
 
 //HELPER FUNCTIONS
 const logon = (success, user) => {
@@ -30,7 +29,6 @@ const setToken = async (token) => {
     try {
           await AsyncStorage.setItem('@MySuperStore:token', token);
         } catch (error) {
-          // Error saving data
           console.log(error);
         }
 }
@@ -47,7 +45,6 @@ export const signup = (creds) => {
                 Actions.today();
             })
             .catch(err => {
-                throw err;
                 dispatch(handleAuthErr("signup", err.response.status));
             });
     };
@@ -63,16 +60,8 @@ export const signin = (creds) => {
                 Actions.today();
             })
             .catch(err => {
-                throw err;
                 dispatch(handleAuthErr("signin", err.response.status));
             });
-    };
-};
-
-export const logout = () => {
-    localStorage.removeItem("token");
-    return {
-        type: LOGOUT
     };
 };
 
@@ -91,11 +80,17 @@ export const verify = (history, pathname) => {
     };
 };
 
+export const clearAuthErrs = () => {
+    return {
+        type: "CLEAR_AUTH_ERRS"
+    }
+}
+
 export const userActions = {
     signin,
     signup,
-    logout,
-    verify
+    verify,
+    clearAuthErrs
     //add other actions after creating
 };
 
@@ -111,7 +106,7 @@ let defaultState = {
         password: "",
         locations: []
     },
-    authErrCode: {
+    authErr: {
         signup: "",
         signin: ""
     },
@@ -123,7 +118,7 @@ export const userReducer = (state = defaultState, action) => {
         case LOGON:
             return {
                 ...state,
-                authErrCode: {
+                authErr: {
                     signup: "",
                     signin: ""
                 },
@@ -131,15 +126,23 @@ export const userReducer = (state = defaultState, action) => {
                 isAuthenticated: action.success
             };
         case HANDLE_AUTH_ERR:
+            console.log(state.authErr);
             return {
                 ...state,
-                authErrCode: {
-                    ...state.authErrCode,
+                authErr: {
+                    ...state.authErr,
                     [action.key]: action.errCode
                 }
             };
-        case LOGOUT:
-            return defaultState;
+
+        case "CLEAR_AUTH_ERRS":
+            return {
+                ...state,
+                authErr: {
+                    signup: "",
+                    signin: ""
+                }
+            }
         default:
             return {
                 ...state

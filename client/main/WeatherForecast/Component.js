@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
+// WEATHER ICONS \\
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -15,6 +16,7 @@ import snow from "../../assets/snow.png";
 import thunderstorm from "../../assets/thunderstorm.png";
 import tornado from "../../assets/tornado.png";
 import wind from "../../assets/wind.png";
+/////////////////////////////////////////
 
 export default function DayComponentRender(props) {
     const styles = StyleSheet.create({
@@ -42,20 +44,16 @@ export default function DayComponentRender(props) {
             flex: 1.5,
             flexDirection: "row",
             alignItems: "center",
-            marginTop: 5,
             marginBottom: 10,
             backgroundColor: "white",
-            justifyContent: "space-between",
-            borderBottomColor: "#4C94F6",
-            borderBottomWidth: 1,
-            borderTopColor: "#4C94F6",
-            borderTopWidth: 1
+            justifyContent: "space-between"
         },
         degCol: {
             color: "#7D418C"
         }
     });
 
+    //provides icon path, based on daily.icon from Dark Sky
     let currIcon;
 
     switch (props.current.icon) {
@@ -105,8 +103,6 @@ export default function DayComponentRender(props) {
 
     return (
         <View style={styles.viewContainer}>
-            {/* Padding for Status Bar */}
-            <View style={{ height: 22, backgroundColor: "#AFAFAF" }} />
             {/* Weather Right Meow */}
             <View style={styles.daySect}>
                 <Text style={styles.tempText}>

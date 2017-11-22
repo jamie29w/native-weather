@@ -86,7 +86,7 @@ export default function DayComponentRender(props) {
     return (
         <View style={styles.viewContainer}>
             {/* Padding for Status Bar */}
-            <View style={{ height: 22 }} />
+            <View style={{ height: 22, backgroundColor: "#AFAFAF" }} />
             {/* Weather Right Meow */}
             <View style={styles.daySect}>
                 <Image source={currIcon} style={styles.icon} />

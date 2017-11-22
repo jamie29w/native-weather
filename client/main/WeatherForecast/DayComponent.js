@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
+// import Moment from "react-moment";
+
 import clearDay from "../../assets/clear-day.png";
 import clearNight from "../../assets/clear-night.png";
 import cloud from "../../assets/cloud.png";
@@ -94,14 +96,44 @@ export default function DayComponent(props) {
         viewStyles = styles.daySect2;
     }
 
+    //Populate day of week
+    let forcastTime = new Date(Number(props.day.time) * 1000);
+    const dayIndex = forcastTime.getDay();
+
+    let dayOfWeek;
+    switch (dayIndex) {
+        case 0:
+            dayOfWeek = "Sunday";
+            break;
+        case 1:
+            dayOfWeek = "Monday";
+            break;
+        case 2:
+            dayOfWeek = "Tuesday";
+            break;
+        case 3:
+            dayOfWeek = "Wednesday";
+            break;
+        case 4:
+            dayOfWeek = "Thursday";
+            break;
+        case 5:
+            dayOfWeek = "Friday";
+            break;
+        case 6:
+            dayOfWeek = "Saturday";
+            break;
+    }
+    console.log("dayIndex is");
+    console.log(dayIndex);
     return (
         <View style={viewStyles}>
             <Image source={currIcon} style={styles.icon} />
             <Text style={{ color: "rebeccapurple" }}>
-                {props.day.time} Hi:{" "}
-                {Math.round(Number(props.day.temperatureHigh))}° Lo:{" "}
-                {Math.round(Number(props.day.temperatureLow))}°
+                {dayOfWeek} Hi: {Math.round(Number(props.day.temperatureHigh))}°
+                Lo: {Math.round(Number(props.day.temperatureLow))}°
             </Text>
         </View>
     );
 }
+//

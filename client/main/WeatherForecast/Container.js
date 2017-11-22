@@ -12,7 +12,6 @@ export default class WeatherForecastContainer extends Component {
                 temperature: "",
                 icon: ""
             },
-            weeklySummary: "",
             daily: {
                 data: [
                     {
@@ -35,7 +34,8 @@ export default class WeatherForecastContainer extends Component {
     }
 
     genDailyForecast() {
-        return this.state.daily.data.map((day, i) => {
+        const forDays = this.state.daily.data;
+        return forDays.slice(0, forDays.length - 1).map((day, i) => {
             console.log(day);
             return <DayComponent key={day.time + i} day={day} i={i} />;
         });
@@ -46,7 +46,7 @@ export default class WeatherForecastContainer extends Component {
             .get(
                 `https://api.darksky.net/forecast/68f41e08c2748e697411c2fae78bcf0c/${
                     lat
-                },${long}`
+                },${long}?exclude=hourly,minutely,alerts,flags`
             )
             .then(response => {
                 this.setState(prevState => {
@@ -54,7 +54,6 @@ export default class WeatherForecastContainer extends Component {
                     return {
                         ...prevState,
                         current: response.data.currently,
-                        hourly: response.data.hourly,
                         daily: response.data.daily
                     };
                 });

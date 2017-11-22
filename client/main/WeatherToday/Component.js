@@ -137,7 +137,7 @@ export default function WeatherTodayComponent(props) {
             <View>
                 <Button
                     title="logout"
-                    onPress={() => Actions.login()}></Button>
+                    onPress={() => Actions.reset("login")}></Button>
             </View>
         </View>
     );

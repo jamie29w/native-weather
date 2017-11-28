@@ -34,13 +34,13 @@ export default function WeatherTodayComponent(props) {
             alignItems: "center",
             alignContent: "stretch",
             flexDirection: "column",
-            justifyContent: "space-between"
+            justifyContent: "space-around"
         },
         icon: {
             height: 100,
-            flex: 1,
-            marginTop: 20,
-            marginBottom: 20
+            flex: 0.5
+            // marginTop: 20,
+            // marginBottom: 20
         },
         textSect: {
             flex: 1,
@@ -50,20 +50,21 @@ export default function WeatherTodayComponent(props) {
             color: "#7D418C",
             fontSize: 30,
             textAlign: "center",
-            marginTop: 20,
-            marginBottom: 20
+            marginTop: 20
         },
         infoText: {
             color: "#FAFAFA",
-            fontSize: 35,
+            fontSize: 20,
             textAlign: "center",
             paddingLeft: 25,
-            paddingRight: 25
+            paddingRight: 25,
+            marginTop: 10
         },
         tempText: {
             textAlign: "center",
             color: "#FAFAFA",
-            fontSize: 35
+            fontSize: 30,
+            marginTop: 10
         },
         degCol: {
             color: "#7D418C"
@@ -72,7 +73,7 @@ export default function WeatherTodayComponent(props) {
         //new styles
 
         buttonSect: {
-            marginTop: 150,
+            marginTop: 25,
             flex: 1,
             display: "flex",
             flexWrap: "nowrap",
@@ -82,8 +83,7 @@ export default function WeatherTodayComponent(props) {
         logOutButton: {
             height: 40,
             width: 150,
-            paddingTop: 10,
-            paddingBottom: 10,
+            padding: 10,
             backgroundColor: "#7D418C",
             borderColor: "#7D418C",
             borderWidth: 1,
@@ -102,7 +102,7 @@ export default function WeatherTodayComponent(props) {
             borderTopRightRadius: 5
         },
 
-        blueText: {
+        purpleText: {
             textAlign: "center",
             color: "#7D418C"
         },
@@ -169,15 +169,25 @@ export default function WeatherTodayComponent(props) {
                 resizeMode={"contain"}
                 style={styles.icon}
             />
-            <View style={styles.textSect}>
+
+            {/* <View style={styles.textSect}>
                 <Text style={styles.headText}>Right Meow:</Text>
                 <Text style={styles.tempText}>
                     {Math.round(Number(props.current.temperature))}
                     <Text style={styles.degCol}>°</Text>
                 </Text>
                 <Text style={styles.infoText}>{props.current.summary}</Text>
-            </View>
+            </View> */}
+
             <View style={styles.textSect}>
+                {/* sect 1 */}
+                <Text style={styles.headText}>Right Meow:</Text>
+                <Text style={styles.tempText}>
+                    {Math.round(Number(props.current.temperature))}
+                    <Text style={styles.degCol}>°</Text>
+                </Text>
+                <Text style={styles.infoText}>{props.current.summary}</Text>
+                {/* sect 2 */}
                 <Text style={styles.headText}>Tell me more:</Text>
                 <Text style={styles.tempText}>
                     Hi:{" "}
@@ -189,20 +199,21 @@ export default function WeatherTodayComponent(props) {
                 <Text style={styles.infoText}>
                     {props.daily.data[0].summary}
                 </Text>
-            </View>
-            {/* break */}
-
-            <View style={styles.buttonSect}>
-                <TouchableOpacity onPress={() => Actions.reset("login")}>
-                    <View style={styles.logOutButton}>
-                        <Text style={styles.whiteText}>Logout</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => Actions.forecast()}>
-                    <View style={styles.forecastButton}>
-                        <Text style={styles.blueText}>Extended Forecast</Text>
-                    </View>
-                </TouchableOpacity>
+                {/* buttons */}
+                <View style={styles.buttonSect}>
+                    <TouchableOpacity onPress={() => Actions.reset("login")}>
+                        <View style={styles.logOutButton}>
+                            <Text style={styles.whiteText}>Logout</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Actions.forecast()}>
+                        <View style={styles.forecastButton}>
+                            <Text style={styles.purpleText}>
+                                Extended Forecast
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

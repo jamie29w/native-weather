@@ -37,7 +37,7 @@ export default function DayComponentRender(props) {
         },
         icon: {
             width: 80,
-            height: 80,
+            // height: 80,
             marginRight: 15
         },
         daySect: {
@@ -110,7 +110,11 @@ export default function DayComponentRender(props) {
                     <Text style={styles.degCol}>°</Text>
                 </Text>
                 <Text style={styles.summaryText}>{props.current.summary}</Text>
-                <Image source={currIcon} style={styles.icon} />
+                <Image
+                    source={currIcon}
+                    resizeMode={"contain"}
+                    style={styles.icon}
+                />
             </View>
             {/* Render 7 day forecast */}
             {props.genDailyForecast()}

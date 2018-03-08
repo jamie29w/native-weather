@@ -30,7 +30,7 @@ cd native-weather/server
 yarn
 
 //Spin up the backend
-yarn start
+node start
 
 //Open another terminal window
 //Go into the client
